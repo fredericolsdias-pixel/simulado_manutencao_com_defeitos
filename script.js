@@ -35,7 +35,7 @@ productForm.addEventListener('submit', (event) => {
   const quantity = Number(productQuantityInput.value);
   const price = Number(productPriceInput.value);
 
-  if (name === null) {
+  if (!name) {
     showFormMessage('Informe o nome do produto.');
     productNameInput.focus();
     return;
