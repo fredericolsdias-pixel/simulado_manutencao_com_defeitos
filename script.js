@@ -110,15 +110,15 @@ cancelEditButton.addEventListener('click', () => {
 
 function renderProducts() {
   const searchTerm = productSearch.value.trim().toLocaleLowerCase('pt-BR');
-  const filteredProducts = products.filter((product) =>
+  const Products = products.filter((product) =>
     product.name.toLocaleLowerCase('pt-BR').includes(searchTerm) ||
     product.category.toLocaleLowerCase('pt-BR').includes(searchTerm)
   );
 
   productList.replaceChildren();
-  productCount.textContent = String(filteredProducts.length);
+  productCount.textContent = String(Products.length);
 
-  if (filteredProducts.length === 0) {
+  if (Products.length === 0) {
     const row = document.createElement('tr');
     row.className = 'empty-row';
     const cell = document.createElement('td');
@@ -131,7 +131,7 @@ function renderProducts() {
     return;
   }
 
-  filteredProducts.forEach((product) => {
+  Products.forEach((product) => {
     const row = document.createElement('tr');
     row.append(
       createCell(product.name, 'product-name'),
