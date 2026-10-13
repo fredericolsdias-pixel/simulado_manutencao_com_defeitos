@@ -111,7 +111,7 @@ function renderProducts() {
   const searchTerm = productSearch.value.trim().toLocaleLowerCase('pt-BR');
   const filteredProducts = products.filter((product) =>
     product.name.toLocaleLowerCase('pt-BR').includes(searchTerm) ||
-    product.category.toLocaleLowerCase('pt-BR').startsWith(searchTerm)
+    product.category.toLocaleLowerCase('pt-BR').includes(searchTerm)
   );
 
   productList.replaceChildren();
