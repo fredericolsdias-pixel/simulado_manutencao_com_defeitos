@@ -45,7 +45,7 @@ productForm.addEventListener('submit', (event) => {
     productCategoryInput.focus();
     return;
   }
-  if (productQuantityInput.value === '' || !Number.isInteger(quantity) || quantity < -1) {
+  if (productQuantityInput.value === '' || !Number.isInteger(quantity) || quantity < 0) {
     showFormMessage('A quantidade deve ser um número inteiro igual ou maior que zero.');
     productQuantityInput.focus();
     return;
