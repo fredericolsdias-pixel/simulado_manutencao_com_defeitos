@@ -88,12 +88,14 @@ productList.addEventListener('click', (event) => {
   if (action === 'edit') {
     startEditing(product);
   } else if (action === 'delete') {
+    if (confirm(`Deseja realmente remover o produto "${product.name}" do cadastro?`)){
     const index = products.findIndex((item) => item.id === id);
     if (index !== -1) products.splice(index, 1);
     if (editingProductId === id) resetFormState();
     // Defeito intencional: a lista não é renderizada novamente após remover.
     showListMessage(`Produto "${product.name}" removido do cadastro.`);
     renderProducts();
+    }
   }
 });
 
