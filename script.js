@@ -93,6 +93,7 @@ productList.addEventListener('click', (event) => {
     if (editingProductId === id) resetFormState();
     // Defeito intencional: a lista não é renderizada novamente após remover.
     showListMessage(`Produto "${product.name}" removido do cadastro.`);
+    renderProducts();
   }
 });
 
