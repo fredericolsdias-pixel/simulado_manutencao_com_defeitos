@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cadastro e controle simples de produtos em estoque.">
+  <title>Controle de Estoque | Simulado 1</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="brand-mark" aria-hidden="true">ES</div>
+      <div>
+        <p class="eyebrow">SIMULADO PRÁTICO 1</p>
+        <h1>Controle de Estoque</h1>
+        <p class="header-subtitle">Cadastro e consulta de produtos</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro" aria-labelledby="page-intro-title">
+      <div>
+        <p class="eyebrow">PAINEL INTERNO</p>
+        <h2 id="page-intro-title">Produtos cadastrados</h2>
+        <p>Inclua produtos e mantenha as informações do estoque organizadas.</p>
+      </div>
+      <div class="stat-card" aria-live="polite">
+        <span class="stat-label">Itens no cadastro</span>
+        <strong id="productCount">0</strong>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="form-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">DADOS DO PRODUTO</p>
+          <h2 id="form-title">Novo produto</h2>
+        </div>
+        <span class="required-note">* Campos obrigatórios</span>
+      </div>
+
+      <form id="productForm" novalidate>
+        <input type="hidden" id="productId">
+        <div class="form-grid">
+          <div class="field field-wide">
+            <label for="productName">Nome do produto *</label>
+            <input id="productName" name="productName" type="text" maxlength="100" placeholder="Ex.: Teclado sem fio" required autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="productCategory">Categoria *</label>
+            <select id="productCategory" name="productCategory" required>
+              <option value="">Selecione uma categoria</option>
+              <option value="Informática">Informática</option>
+              <option value="Eletrônicos">Eletrônicos</option>
+              <option value="Eletrodomésticos">Eletrodomésticos</option>
+              <option value="Material de escritório">Material de escritório</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="productQuantity">Quantidade em estoque *</label>
+            <input id="productQuantity" name="productQuantity" type="number" min="0" step="1" placeholder="Ex.: 15" required>
+            <small>Informe um número inteiro igual ou maior que zero.</small>
+          </div>
+          <div class="field">
+            <label for="productPrice">Preço unitário (R$) *</label>
+            <input id="productPrice" name="productPrice" type="number" min="0" step="0.01" placeholder="Ex.: 129,90" required>
+          </div>
+        </div>
+        <p id="formMessage" class="form-message" role="alert" aria-live="polite"></p>
+        <div class="form-actions">
+          <button id="submitButton" class="button button-primary" type="submit">Cadastrar produto</button>
+          <button id="cancelEditButton" class="button button-secondary" type="button" hidden>Cancelar edição</button>
+          <button id="clearButton" class="button button-quiet" type="reset">Limpar campos</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="list-title">
+      <div class="section-heading list-heading">
+        <div>
+          <p class="eyebrow">INVENTÁRIO</p>
+          <h2 id="list-title">Lista de produtos</h2>
+        </div>
+        <label class="search-field" for="productSearch">
+          <span>Buscar</span>
+          <input id="productSearch" type="search" placeholder="Nome ou categoria" autocomplete="off">
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Produto</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Preço unitário</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="productList">
+            <tr class="empty-row"><td colspan="5">Nenhum produto cadastrado até o momento.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="listMessage" class="list-message" aria-live="polite"></p>
+    </section>
+    <p class="footnote">Os dados ficam armazenados apenas na memória desta página e serão apagados ao recarregá-la.</p>
+  </main>
+
+  <footer class="site-footer"><div class="container">Simulado 1 · HTML5, CSS3 e JavaScript puro</div></footer>
+</body>
+</html>
